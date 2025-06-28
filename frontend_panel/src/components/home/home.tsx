@@ -62,7 +62,7 @@ function Home() {
 
       {/* Table Section */}
       <div className="max-900px:px-0 relative">
-        <h4 className="text-lg font-medium absolute top-1 text-gray-900 dark:text-gray-100">
+        <h4 className="text-lg font-medium text-gray-900 dark:text-gray-100">
           Latest Deliveries
         </h4>
         <div className="mt-1">
