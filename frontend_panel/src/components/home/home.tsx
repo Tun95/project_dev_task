@@ -3,6 +3,7 @@ import SliderComponent from "./slider/Slider";
 import TableComponent from "./table/Table";
 import Widget from "./widget/Widget";
 import { useTheme } from "../../custom hooks/Hooks";
+import ProgressBar from "./progress bar/ProgressBar";
 
 function Home() {
   const { theme } = useTheme();
@@ -38,7 +39,7 @@ function Home() {
       {/* Chart and Slider Section */}
       <div className="mb-5 max-900px:px-0">
         <h4 className="text-lg font-medium text-gray-900 dark:text-gray-100">
-          Event Registrations per month
+          Project Overview
         </h4>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-1 w-full max-900px:grid-cols-1">
           <div className="w-full border border-gray-200 dark:border-gray-700 p-2 rounded-md h-[360px] overflow-hidden bg-white dark:bg-gray-800">
@@ -50,10 +51,19 @@ function Home() {
         </div>
       </div>
 
+      <div className="max-900px:px-0 mb-5">
+        <h4 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+          Project Statistics
+        </h4>
+        <div className="mt-1">
+          <ProgressBar />
+        </div>
+      </div>
+
       {/* Table Section */}
       <div className="max-900px:px-0">
         <h4 className="text-lg font-medium text-gray-900 dark:text-gray-100">
-          Project History
+          Latest Deliveries
         </h4>
         <div className="mt-1">
           <TableComponent />
