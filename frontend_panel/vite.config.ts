@@ -6,7 +6,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        api: "modern-compiler", // or "modern"
+        api: "modern-compiler",
       },
     },
   },
@@ -21,13 +21,13 @@ export default defineConfig({
         chunkFileNames: "assets/[name]-[hash].js",
         assetFileNames: "assets/[name]-[hash].[ext]",
         manualChunks: {
-          vendor: ["react", "react-dom"], // Split vendor chunks for caching
+          vendor: ["react", "react-dom"],
         },
       },
     },
   },
   define: {
-    global: {}, // Support for some npm packages that expect a global object
+    global: {},
   },
   server: {
     port: 3001,
@@ -35,7 +35,7 @@ export default defineConfig({
   },
   optimizeDeps: {
     esbuildOptions: {
-      target: "esnext", // Ensure compatibility
+      target: "esnext",
     },
   },
 });
