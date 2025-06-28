@@ -21,7 +21,7 @@ const Widget: React.FC<WidgetProps> = ({ type, count = 0 }) => {
           </span>
         </div>
         <div className="flex items-center gap-1">
-          <span className="text-2xl font-light dark:text-white">
+          <span className="text-2xl font-bold font-light dark:text-white">
             {formatNumberWithCommas(count)}
           </span>
           <span className="flex items-center gap-1 text-xs">

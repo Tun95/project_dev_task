@@ -7,7 +7,7 @@ function HomeScreen() {
   return (
     <div>
       <Helmet>
-        <title>Dashboard</title>
+        <title>Dashboard | ProjectFlow </title>
       </Helmet>
       <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900 transition-all">
         {/* Sidebar - hidden on screens smaller than 900px */}

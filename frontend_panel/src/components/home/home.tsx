@@ -15,12 +15,21 @@ function Home() {
 
   return (
     <div className={`w-full overflow-hidden ${theme === "dark" ? "dark" : ""}`}>
-      {/* Navigation */}
-      <div className="mb-2 max-480px:mb-1">
-        <div className="content">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 max-480px:text-xl max-480px:p-2">
-            Welcome! Here's your summary
-          </h2>
+      {/* Welcome message */}
+      <div
+        className={`w-full overflow-hidden ${theme === "dark" ? "dark" : ""}`}
+      >
+        {/* Welcome message */}
+        <div className="mb-2 max-480px:mb-1">
+          <div className="content">
+            <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 max-480px:text-xl max-480px:p-2">
+              Welcome back to ProjectFlow!
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 mt-2 max-w-3xl text-sm leading-6">
+              Track all deliverables, client feedback, and project status in one
+              place. Quickly access what needs attention today.
+            </p>
+          </div>
         </div>
       </div>
 

@@ -5,7 +5,7 @@ function LoginScreen() {
   return (
     <div>
       <Helmet>
-        <title>Login</title>
+        <title>Login | ProjectFlow</title>
       </Helmet>
       <div>
         <Login />

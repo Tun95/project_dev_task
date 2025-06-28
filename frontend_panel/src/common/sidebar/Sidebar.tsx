@@ -22,7 +22,7 @@ const Sidebar = ({ onClose, mobileVersion = false }: SidebarProps) => {
     >
       <div className="flex items-center justify-between px-6 h-16 border-b border-gray-200 dark:border-gray-700">
         <span className="font-display text-xl font-semibold text-gray-900 dark:text-white">
-          Project Dev.
+          ProjectFlow
         </span>
         {mobileVersion && (
           <button

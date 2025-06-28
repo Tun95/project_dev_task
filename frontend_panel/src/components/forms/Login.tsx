@@ -49,10 +49,10 @@ const Login = () => {
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 max-480px:p-6 max-480px:px-5">
           <div className="text-center mb-8">
             <span className="font-display text-2xl font-semibold text-gray-900 dark:text-white">
-              Project Dev.
+              ProjectFlow
             </span>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-              Sign in to your Project Dev account
+              Sign in to your ProjectFlow account
             </p>
           </div>
 

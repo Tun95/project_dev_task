@@ -40,7 +40,7 @@ function Navbar() {
             to="/"
             className="font-display text-xl font-semibold text-gray-900 dark:text-white"
           >
-            Project Dev.
+            ProjectFlow
           </Link>
         </div>
 
