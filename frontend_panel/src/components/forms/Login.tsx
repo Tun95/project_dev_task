@@ -135,22 +135,6 @@ const Login = () => {
                     className="text-sm text-red-500 mt-1"
                   />
                 </div>
-
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <Field
-                      type="checkbox"
-                      name="remember"
-                      className="rounded border-gray-300 text-gray-900 focus:ring-0"
-                    />
-                    <label
-                      htmlFor="remember"
-                      className="ml-2 text-sm text-gray-600 dark:text-gray-400"
-                    >
-                      Remember me
-                    </label>
-                  </div>
-                </div>
                 <button
                   type="submit"
                   disabled={isSubmitting}
