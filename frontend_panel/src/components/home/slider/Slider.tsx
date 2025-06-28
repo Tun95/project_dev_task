@@ -10,7 +10,7 @@ interface ArrowProps {
 
 const NextArrow: React.FC<ArrowProps> = ({ onClick }) => (
   <div className="absolute right-3 bottom-[165px] z-10" onClick={onClick}>
-    <button className="w-8 h-8 rounded-full bg-white  border-2 border-gray-300  flex items-center justify-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-300 transition-colors">
+    <button className="w-8 h-8 rounded-full bg-white  border-2 border-gray-300  flex items-center justify-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-200 transition-colors">
       <ChevronRight className="w-5 h-5 text-gray-700 dark:text-gray-400" />
     </button>
   </div>
@@ -18,7 +18,7 @@ const NextArrow: React.FC<ArrowProps> = ({ onClick }) => (
 
 const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => (
   <div className="absolute left-3 top-[165px] z-10" onClick={onClick}>
-    <button className="w-8 h-8 rounded-full bg-white  border-2 border-gray-300  flex items-center justify-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-300 transition-colors">
+    <button className="w-8 h-8 rounded-full bg-white  border-2 border-gray-300  flex items-center justify-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-200 transition-colors">
       <ChevronLeft className="w-5 h-5 text-gray-700 dark:text-gray-400" />
     </button>
   </div>

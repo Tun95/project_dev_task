@@ -131,7 +131,7 @@ function TableComponent() {
               placeholder="Search..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full pl-10 pr-4 h-9 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
             />
           </div>
 
@@ -139,7 +139,7 @@ function TableComponent() {
           <select
             value={dateFilter}
             onChange={(e) => setDateFilter(e.target.value)}
-            className="px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="px-3 h-9  rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
           >
             <option value="">Date</option>
             {[...new Set(data.map((item) => item.date))].map((date, index) => (
@@ -152,7 +152,7 @@ function TableComponent() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="px-3 h-9  rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
           >
             <option value="">Status</option>
             <option value="Completed">Completed</option>
@@ -162,7 +162,7 @@ function TableComponent() {
           <select
             value={speakerFilter}
             onChange={(e) => setSpeakerFilter(e.target.value)}
-            className="px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="px-3 h-9  rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
           >
             <option value="">Name</option>
             {[...new Set(data.flatMap((item) => item.speakers))].map(
@@ -187,7 +187,7 @@ function TableComponent() {
             <label className="text-sm">Sort:</label>
             <select
               onChange={(e) => handleSortChange(e.target.value)}
-              className="px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="px-3 h-9  rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
             >
               <option value="recent">Most Recent</option>
               <option value="name-asc">Name A-Z</option>
@@ -203,7 +203,7 @@ function TableComponent() {
             </button>
             <button
               onClick={handleExportCSV}
-              className="flex items-center gap-2 px-3 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+              className="flex items-center gap-2 px-3 h-9  rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
             >
               <Download className="w-4 h-4" />
               <span>Export</span>

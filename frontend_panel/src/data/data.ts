@@ -4,8 +4,8 @@ import s1 from "../assets/s1.png";
 export const data: DataType[] = [
   {
     key: "1",
-    eventName: "Tech Conference 2024",
-    date: "2024-10-15",
+    eventName: "Tech Conference 2025",
+    date: "2025-10-15",
     speakers: ["John Doe", "Sarah Connor", "Alex Johnson"],
     status: "Completed",
     attendees: 300,
@@ -15,7 +15,7 @@ export const data: DataType[] = [
   {
     key: "2",
     eventName: "AI Summit",
-    date: "2024-11-22",
+    date: "2025-11-22",
     speakers: ["Jane Smith", "Alex Johnson"],
     status: "In Progress",
     attendees: 500,
@@ -25,7 +25,7 @@ export const data: DataType[] = [
   {
     key: "3",
     eventName: "Web Dev Workshop",
-    date: "2024-12-01",
+    date: "2025-12-01",
     speakers: ["Alex Johnson", "Michael Brown"],
     status: "In Progress",
     attendees: 150,
@@ -35,7 +35,7 @@ export const data: DataType[] = [
   {
     key: "4",
     eventName: "Cloud Expo",
-    date: "2024-09-10",
+    date: "2025-09-10",
     speakers: ["Chris White", "Anna Lee"],
     status: "Completed",
     attendees: 400,
@@ -45,7 +45,7 @@ export const data: DataType[] = [
   {
     key: "5",
     eventName: "Data Science Symposium",
-    date: "2024-08-25",
+    date: "2025-08-25",
     speakers: ["Emily Green", "David Carter"],
     status: "Completed",
     attendees: 350,
@@ -55,7 +55,7 @@ export const data: DataType[] = [
   {
     key: "6",
     eventName: "Blockchain Meetup",
-    date: "2024-07-15",
+    date: "2025-07-15",
     speakers: ["Daniel Brown", "Sophia Martinez"],
     status: "In Progress",
     attendees: 250,
@@ -65,7 +65,7 @@ export const data: DataType[] = [
   {
     key: "7",
     eventName: "Cybersecurity Workshop",
-    date: "2024-06-20",
+    date: "2025-06-20",
     speakers: ["Olivia Taylor", "Marcus Wright"],
     status: "Completed",
     attendees: 200,
@@ -75,7 +75,7 @@ export const data: DataType[] = [
   {
     key: "8",
     eventName: "IoT Conference",
-    date: "2024-05-12",
+    date: "2025-05-12",
     speakers: ["Lucas Lee", "Rachel Adams"],
     status: "Completed",
     attendees: 180,
@@ -85,7 +85,7 @@ export const data: DataType[] = [
   {
     key: "9",
     eventName: "Fintech Innovations",
-    date: "2024-04-08",
+    date: "2025-04-08",
     speakers: ["Sophia Walker", "James Anderson"],
     status: "In Progress",
     attendees: 320,
@@ -95,7 +95,7 @@ export const data: DataType[] = [
   {
     key: "10",
     eventName: "Quantum Computing Forum",
-    date: "2024-03-18",
+    date: "2025-03-18",
     speakers: ["Ethan Clark", "Laura Johnson"],
     status: "Completed",
     attendees: 150,
@@ -105,7 +105,7 @@ export const data: DataType[] = [
   {
     key: "11",
     eventName: "Computing Forum",
-    date: "2024-03-18",
+    date: "2025-03-18",
     speakers: ["Ethan Clark", "Laura Johnson"],
     status: "Completed",
     attendees: 150,
