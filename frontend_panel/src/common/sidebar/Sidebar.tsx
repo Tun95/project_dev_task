@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, Settings, List, X } from "lucide-react";
+import { LayoutDashboard, List, X } from "lucide-react";
 
 interface SidebarProps {
   onClose?: () => void;
@@ -12,7 +12,6 @@ const Sidebar = ({ onClose, mobileVersion = false }: SidebarProps) => {
   const menuItems = [
     { icon: LayoutDashboard, label: "Dashboard", path: "/" },
     { icon: List, label: "Projects", path: "/projects" },
-    { icon: Settings, label: "Settings", path: "/settings" },
   ];
 
   return (

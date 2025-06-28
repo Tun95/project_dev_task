@@ -1,6 +1,6 @@
 import { Table, Tag } from "antd";
-import { useState } from "react";
-import { Circle } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Circle, ChevronRight, ChevronDown } from "lucide-react";
 import { DataType } from "../../../types/data/datatype";
 import { data } from "../../../data/data";
 import { formatDate } from "../../../utilities/utils/Utils";
@@ -10,10 +10,26 @@ const { Column } = Table;
 
 function TableComponent() {
   const { theme } = useTheme();
-  const [isMobileView] = useState(false); // Keeping mobile view logic but simplified
+  const [isMobileView, setIsMobileView] = useState(false);
+  const [expandedRowKeys, setExpandedRowKeys] = useState<React.Key[]>([]);
 
   // Get only first 5 rows of data
   const tableData = data.slice(0, 5);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobileView(window.innerWidth <= 620);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleExpand = (key: React.Key) => {
+    setExpandedRowKeys((prevKeys) =>
+      prevKeys.includes(key)
+        ? prevKeys.filter((k) => k !== key)
+        : [...prevKeys, key]
+    );
+  };
 
   return (
     <div className="w-full">
@@ -27,6 +43,39 @@ function TableComponent() {
           dataSource={tableData}
           className={`w-full ${theme === "dark" ? "dark-table" : ""}`}
           pagination={false} // Disable pagination
+          expandable={
+            isMobileView
+              ? {
+                  expandedRowRender: (record) => (
+                    <div className="px-4 py-2 bg-gray-50 dark:bg-gray-700">
+                      <div className="flex justify-between">
+                        <p className="text-gray-600 dark:text-gray-300">
+                          {record.speakers[0]}
+                        </p>
+                        <p className="text-gray-600 dark:text-gray-300">
+                          {formatDate(record.date)}
+                        </p>
+                      </div>
+                    </div>
+                  ),
+                  rowExpandable: () => true,
+                  expandedRowKeys,
+                  onExpand: (_, record) => toggleExpand(record.key),
+                  expandIcon: ({ onExpand, record }) => (
+                    <button
+                      onClick={(e) => onExpand(record, e)}
+                      className="text-gray-500 dark:text-gray-400"
+                    >
+                      {expandedRowKeys.includes(record.key) ? (
+                        <ChevronDown className="w-4 h-4" />
+                      ) : (
+                        <ChevronRight className="w-4 h-4" />
+                      )}
+                    </button>
+                  ),
+                }
+              : undefined
+          }
         >
           <Column
             title="Event Name"

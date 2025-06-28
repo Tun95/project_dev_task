@@ -27,8 +27,7 @@ function Home() {
         className="grid grid-cols-4 gap-5 py-5 w-full 
                max-1045px:grid-cols-2 
                max-630px:grid-cols-1 
-               max-900px:px-5
-               max-565px:p-2"
+               max-900px:px-0               "
       >
         <Widget TotalEvent={TotalEvent} type="events" />
         <Widget TotalSpeakers={TotalSpeakers} type="speakers" />
@@ -37,7 +36,7 @@ function Home() {
       </div>
 
       {/* Chart and Slider Section */}
-      <div className="mb-5 max-900px:px-5 max-565px:p-2">
+      <div className="mb-5 max-900px:px-0">
         <h4 className="text-lg font-medium text-gray-900 dark:text-gray-100">
           Event Registrations per month
         </h4>
@@ -52,7 +51,7 @@ function Home() {
       </div>
 
       {/* Table Section */}
-      <div className="max-900px:px-5 max-565px:p-2">
+      <div className="max-900px:px-0">
         <h4 className="text-lg font-medium text-gray-900 dark:text-gray-100">
           Project History
         </h4>

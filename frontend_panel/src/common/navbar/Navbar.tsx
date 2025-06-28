@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Search, Moon, Sun, Settings, ChevronDown, Menu } from "lucide-react";
+import { Search, Moon, Sun, ChevronDown, Menu } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
 
 import user_image from "../../assets/users.png";
@@ -72,22 +72,6 @@ function Navbar() {
             {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
 
-          {/* <div className="relative flex justify-center" ref={notificationRef}>
-            <button
-              onClick={() => setShowNotifications(!showNotifications)}
-              className="relative p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-            >
-              <Bell size={16} />
-              {state.unreadCount > 0 && (
-                <span className="absolute top-0.5 right-0.5 w-2 h-2 bg-accent-500 rounded-full"></span>
-              )}
-            </button>
-
-            {showNotifications && (
-              <NotificationDropdown state={state} markAsRead={markAsRead} />
-            )}
-          </div> */}
-
           <div className="flex items-center gap-3 pl-4 border-l border-gray-200 dark:border-gray-700">
             <img
               src={user_image}
@@ -116,6 +100,16 @@ function Navbar() {
                 <div className="absolute right-0 top-1.5 mt-7 w-48 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-lg z-50">
                   <div className="p-2">
                     <NavLink
+                      to="/"
+                      className={({ isActive }) =>
+                        `block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md ${
+                          isActive ? "bg-gray-100 dark:bg-gray-700" : ""
+                        }`
+                      }
+                    >
+                      Dashboard
+                    </NavLink>
+                    <NavLink
                       to="/projects"
                       className={({ isActive }) =>
                         `block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md ${
@@ -124,16 +118,6 @@ function Navbar() {
                       }
                     >
                       Projects
-                    </NavLink>
-                    <NavLink
-                      to="/settings"
-                      className={({ isActive }) =>
-                        `block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md ${
-                          isActive ? "bg-gray-100 dark:bg-gray-700" : ""
-                        }`
-                      }
-                    >
-                      Settings
                     </NavLink>
                   </div>
                 </div>
@@ -146,14 +130,6 @@ function Navbar() {
             >
               <Menu size={20} />
             </button>
-
-            {/* Desktop: Show settings icon */}
-            <Link
-              to="/settings"
-              className="max-900px:hidden block p-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
-            >
-              <Settings size={16} />
-            </Link>
           </div>
         </div>
       </header>
