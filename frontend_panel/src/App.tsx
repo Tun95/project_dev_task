@@ -7,6 +7,7 @@ import LoadingBox from "./utilities/message loading/LoadingBox";
 import HomeScreen from "./screens/homescreen/HomeScreen";
 import NotFoundScreen from "./utilities/404 error/PageNotFound";
 import LoginScreen from "./screens/formscreens/LoginScreen";
+import ProjectScreen from "./screens/projectscreen/ProjectScreen";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,10 +34,11 @@ function App() {
       <Routes>
         <Route path="*" element={<NotFoundScreen />} />
         <Route path="/" element={<HomeScreen />} />
+        <Route path="/projects" element={<ProjectScreen />} />
 
         {/* AUTH */}
-        {/* <Route path="/register" element={<RegisterScreen />} /> */}
         <Route path="/login" element={<LoginScreen />} />
+        {/* AUTH */}
       </Routes>
     </div>
   );
