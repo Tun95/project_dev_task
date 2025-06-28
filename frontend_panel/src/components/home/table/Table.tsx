@@ -1,6 +1,6 @@
-import { Table, Tag } from "antd";
+import { Table, Tag, Button } from "antd";
 import { useState, useEffect } from "react";
-import { Circle, ChevronRight, ChevronDown } from "lucide-react";
+import { Circle, ChevronRight, ChevronDown, Download } from "lucide-react";
 import { DataType } from "../../../types/data/datatype";
 import { data } from "../../../data/data";
 import { formatDate } from "../../../utilities/utils/Utils";
@@ -12,6 +12,7 @@ function TableComponent() {
   const { theme } = useTheme();
   const [isMobileView, setIsMobileView] = useState(false);
   const [expandedRowKeys, setExpandedRowKeys] = useState<React.Key[]>([]);
+  const [exportLoading, setExportLoading] = useState(false);
 
   // Get only first 5 rows of data
   const tableData = data.slice(0, 5);
@@ -31,9 +32,56 @@ function TableComponent() {
     );
   };
 
+  const handleExportCSV = () => {
+    setExportLoading(true);
+
+    // Simulate API call/processing delay
+    setTimeout(() => {
+      const csvData = tableData.map((item) => ({
+        EventName: item.eventName,
+        Date: item.date,
+        Status: item.status,
+        Speakers: item.speakers.join(", "),
+      }));
+
+      const csvRows = [
+        Object.keys(csvData[0]).join(","),
+        ...csvData.map((row) => Object.values(row).join(",")),
+      ];
+
+      const csvString = csvRows.join("\n");
+      const blob = new Blob([csvString], { type: "text/csv" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "events_export.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+
+      setExportLoading(false);
+    }, 1000);
+  };
+
   return (
     <div className="w-full">
-      {/* Table Section - Using theme from useTheme */}
+      {/* Export Button at Top Right */}
+      <div className="flex justify-end mb-4">
+        <Button
+          type="default"
+          icon={<Download className="w-4 h-4" />}
+          onClick={handleExportCSV}
+          loading={exportLoading}
+          className={`flex items-center gap-2 ${
+            theme === "dark"
+              ? "bg-gray-800 text-gray-200 border-gray-600 hover:bg-gray-700"
+              : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50"
+          }`}
+        >
+          Export CSV
+        </Button>
+      </div>
+
+      {/* Table Section */}
       <div
         className={`rounded-lg overflow-hidden ${
           theme === "dark" ? "bg-gray-800" : "bg-white"
@@ -42,7 +90,8 @@ function TableComponent() {
         <Table<DataType>
           dataSource={tableData}
           className={`w-full ${theme === "dark" ? "dark-table" : ""}`}
-          pagination={false} // Disable pagination
+          pagination={false}
+          loading={exportLoading}
           expandable={
             isMobileView
               ? {
