@@ -7,10 +7,11 @@ import ProgressBar from "./progress bar/ProgressBar";
 
 function Home() {
   const { theme } = useTheme();
-  const TotalEvent = 100000;
-  const TotalSpeakers = 25;
-  const TotalUsers = 300;
-  const TotalRevenue = 500000;
+
+  const TotalDeliverables = 42;
+  const PendingReview = 8;
+  const ApprovedItems = 32;
+  const RevisedItems = 2;
 
   return (
     <div className={`w-full overflow-hidden ${theme === "dark" ? "dark" : ""}`}>
@@ -30,10 +31,10 @@ function Home() {
                max-630px:grid-cols-1 
                max-900px:px-0               "
       >
-        <Widget TotalEvent={TotalEvent} type="events" />
-        <Widget TotalSpeakers={TotalSpeakers} type="speakers" />
-        <Widget TotalUsers={TotalUsers} type="users" />
-        <Widget TotalRevenue={TotalRevenue} type="revenue" />
+        <Widget count={TotalDeliverables} type="deliverables" />
+        <Widget count={PendingReview} type="pending" />
+        <Widget count={ApprovedItems} type="approved" />
+        <Widget count={RevisedItems} type="revised" />
       </div>
 
       {/* Chart and Slider Section */}

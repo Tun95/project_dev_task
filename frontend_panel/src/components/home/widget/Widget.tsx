@@ -1,82 +1,14 @@
 import { Info, ArrowUp, ArrowDown } from "lucide-react";
 import { formatNumberWithCommas } from "../../../utilities/utils/Utils";
+import { widgetData } from "../../../data/data";
 
 interface WidgetProps {
-  type: "events" | "speakers" | "users" | "revenue";
-  TotalEvent?: number;
-  TotalSpeakers?: number;
-  TotalUsers?: number;
-  TotalRevenue?: number;
+  type: "deliverables" | "pending" | "approved" | "revised";
+  count: number;
 }
 
-const Widget: React.FC<WidgetProps> = ({
-  type,
-  TotalEvent = 0,
-  TotalSpeakers = 0,
-  TotalUsers = 0,
-  TotalRevenue = 0,
-}) => {
-  let data:
-    | {
-        title: string;
-        isMoney: boolean;
-        percentageChange: number;
-        isIncrease: boolean;
-      }
-    | undefined;
-
-  // Determine the amount based on the type prop
-  const dataType =
-    type === "events"
-      ? TotalEvent
-      : type === "speakers"
-      ? TotalSpeakers
-      : type === "users"
-      ? TotalUsers
-      : type === "revenue"
-      ? TotalRevenue
-      : 0;
-
-  // Switch statement to handle different widget types
-  switch (type) {
-    case "events":
-      data = {
-        title: "Total Events",
-        isMoney: false,
-        percentageChange: 25,
-        isIncrease: true,
-      };
-      break;
-    case "speakers":
-      data = {
-        title: "Active Speakers",
-        isMoney: false,
-        percentageChange: 15,
-        isIncrease: true,
-      };
-      break;
-    case "users":
-      data = {
-        title: "Total Registrations",
-        isMoney: false,
-        percentageChange: 30,
-        isIncrease: true,
-      };
-      break;
-    case "revenue":
-      data = {
-        title: "Total Revenue",
-        isMoney: true,
-        percentageChange: -10,
-        isIncrease: false,
-      };
-      break;
-    default:
-      data = undefined;
-      break;
-  }
-
-  if (!data) return null;
+const Widget: React.FC<WidgetProps> = ({ type, count = 0 }) => {
+  const data = widgetData[type];
 
   return (
     <div className="flex flex-1 p-2 border border-gray-200 dark:border-gray-700 rounded-md h-full bg-white dark:bg-gray-800">
@@ -91,9 +23,7 @@ const Widget: React.FC<WidgetProps> = ({
         </div>
         <div className="flex items-center gap-1">
           <span className="text-2xl font-light dark:text-white">
-            {data.isMoney
-              ? `$${dataType.toLocaleString()}`
-              : formatNumberWithCommas(dataType)}
+            {formatNumberWithCommas(count)}
           </span>
           <span className="flex items-center gap-1 text-xs">
             <div

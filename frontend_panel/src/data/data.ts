@@ -1,6 +1,37 @@
 import { ProjectDelivery } from "../types/data/datatype";
 import s1 from "../assets/s1.png";
 
+export const widgetData = {
+  deliverables: {
+    title: "Total Deliverables",
+    isMoney: false,
+    percentageChange: 12,
+    isIncrease: true,
+    iconColor: "text-blue-500",
+  },
+  pending: {
+    title: "Pending Review",
+    isMoney: false,
+    percentageChange: -5,
+    isIncrease: false,
+    iconColor: "text-orange-500",
+  },
+  approved: {
+    title: "Approved Items",
+    isMoney: false,
+    percentageChange: 18,
+    isIncrease: true,
+    iconColor: "text-green-500",
+  },
+  revised: {
+    title: "Revised Items",
+    isMoney: false,
+    percentageChange: 3,
+    isIncrease: true,
+    iconColor: "text-purple-500",
+  },
+};
+
 export const projectDeliverables: ProjectDelivery[] = [
   {
     key: "1",
