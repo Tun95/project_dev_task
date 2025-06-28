@@ -4,7 +4,6 @@ import { Mail, Lock, AlertCircle, Eye, EyeOff } from "lucide-react";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast } from "sonner";
-// import { LoginFormValues } from "../../types/login/login";
 import { loginSchema } from "../../schema";
 import { AxiosError } from "axios";
 
@@ -37,7 +36,7 @@ const Login = () => {
       navigate(redirect);
     } catch (err: unknown) {
       if (err instanceof AxiosError) {
-        setError(err.response?.data?.message || "An error occurred");
+        setError("An error occurred");
       } else {
         setError("An unexpected error occurred");
       }
