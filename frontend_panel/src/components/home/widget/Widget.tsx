@@ -1,11 +1,7 @@
 import { Info, ArrowUp, ArrowDown } from "lucide-react";
 import { formatNumberWithCommas } from "../../../utilities/utils/Utils";
 import { widgetData } from "../../../data/data";
-
-interface WidgetProps {
-  type: "deliverables" | "pending" | "approved" | "revised";
-  count: number;
-}
+import { WidgetProps } from "../../../types/widget/widget";
 
 const Widget: React.FC<WidgetProps> = ({ type, count = 0 }) => {
   const data = widgetData[type];
@@ -17,7 +13,10 @@ const Widget: React.FC<WidgetProps> = ({ type, count = 0 }) => {
           <span className="font-bold text-gray-600 dark:text-gray-300 text-sm whitespace-nowrap">
             {data.title}
           </span>
-          <span className="text-gray-600 dark:text-gray-300">
+          <span
+            className="text-gray-600 dark:text-gray-300"
+            title={data.tooltip}
+          >
             <Info size={16} className="mt-0.5" />
           </span>
         </div>

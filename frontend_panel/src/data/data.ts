@@ -4,6 +4,7 @@ import s1 from "../assets/s1.png";
 export const widgetData = {
   deliverables: {
     title: "Total Deliverables",
+    tooltip: "This shows the total number of deliverable items submitted.",
     isMoney: false,
     percentageChange: 12,
     isIncrease: true,
@@ -11,6 +12,7 @@ export const widgetData = {
   },
   pending: {
     title: "Pending Review",
+    tooltip: "Items that are awaiting review and action.",
     isMoney: false,
     percentageChange: -5,
     isIncrease: false,
@@ -18,6 +20,7 @@ export const widgetData = {
   },
   approved: {
     title: "Approved Items",
+    tooltip: "These have been reviewed and approved.",
     isMoney: false,
     percentageChange: 18,
     isIncrease: true,
@@ -25,6 +28,7 @@ export const widgetData = {
   },
   revised: {
     title: "Revised Items",
+    tooltip: "Items returned for edits and subsequently revised.",
     isMoney: false,
     percentageChange: 3,
     isIncrease: true,
