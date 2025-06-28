@@ -32,15 +32,22 @@ function TableComponent() {
   const [filteredData, setFilteredData] = useState<DataType[]>(data);
   const [isMobileView, setIsMobileView] = useState(false);
   const [expandedRowKeys, setExpandedRowKeys] = useState<React.Key[]>([]);
-  const [exportLoading, setExportLoading] = useState(false); // Added loading state
+  const [exportLoading, setExportLoading] = useState(false);
+  const [refreshLoading, setRefreshLoading] = useState(false); // Added refresh loading state
 
-  // Clear all filters
+  // Clear all filters with loading state
   const handleRefresh = () => {
-    setSearchTerm("");
-    setDateFilter("");
-    setStatusFilter("");
-    setSpeakerFilter("");
-    setPagination({ ...pagination, current: 1 });
+    setRefreshLoading(true);
+
+    // Simulate processing delay
+    setTimeout(() => {
+      setSearchTerm("");
+      setDateFilter("");
+      setStatusFilter("");
+      setSpeakerFilter("");
+      setPagination({ ...pagination, current: 1 });
+      setRefreshLoading(false);
+    }, 800); // Slightly shorter delay for refresh
   };
 
   useEffect(() => {
@@ -141,7 +148,7 @@ function TableComponent() {
       } finally {
         setExportLoading(false);
       }
-    }, 1000); // 1 second delay to show loading state
+    }, 1000);
   };
 
   return (
@@ -194,7 +201,7 @@ function TableComponent() {
             onChange={(e) => setSpeakerFilter(e.target.value)}
             className="px-3 h-9 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
           >
-            <option value="">Speakers</option>
+            <option value="">Name</option>
             {[...new Set(data.flatMap((item) => item.speakers))].map(
               (speaker, index) => (
                 <option value={speaker} key={index}>
@@ -229,13 +236,13 @@ function TableComponent() {
 
           {/* Actions */}
           <div className="flex gap-2">
-            <button
+            <Button
               onClick={handleRefresh}
-              className="p-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+              loading={refreshLoading}
+              icon={<RefreshCw className="w-4 h-4 relative top-0.5" />}
+              className="p-2 rounded-md border l_flex border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
               title="Refresh filters"
-            >
-              <RefreshCw className="w-4 h-4" />
-            </button>
+            />
             <Button
               onClick={handleExportCSV}
               loading={exportLoading}
@@ -248,7 +255,7 @@ function TableComponent() {
         </div>
       </div>
 
-      {/* Table Section - Using theme from useTheme */}
+      {/* Table Section */}
       <div
         className={`rounded-lg overflow-hidden ${
           theme === "dark" ? "bg-gray-800" : "bg-white"
@@ -317,7 +324,7 @@ function TableComponent() {
             },
           }}
           onChange={handleTableChange}
-          loading={exportLoading} // Show loading state on table during export
+          loading={exportLoading || refreshLoading} // Show loading for both operations
           expandable={
             isMobileView
               ? {
