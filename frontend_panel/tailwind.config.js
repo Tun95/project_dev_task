@@ -1,14 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        lightgreen: "lightgreen",
-        "error-red": "#a02020",
-        "error-bg": "#ffe0e0",
-        "info-blue": "#2020ae",
-        "info-bg": "#e0e0ff",
         gray: {
           50: "#F9FAFB",
           100: "#F3F4F6",
@@ -26,13 +22,25 @@ export default {
           500: "#6366F1",
           600: "#4F46E5",
         },
+        lightgreen: "lightgreen",
+        "error-red": "#a02020",
+        "error-bg": "#ffe0e0",
+        "info-blue": "#2020ae",
+        "info-bg": "#e0e0ff",
       },
       screens: {
         "max-1200px": { max: "1200px" },
+        "min-1200px": { min: "1200px" },
+        "max-1045px": { max: "1045px" },
+        "min-900px": { min: "900px" },
         "max-900px": { max: "900px" },
+        "max-630px": { max: "630px" },
         "max-767px": { max: "767px" },
+        "min-565px": { min: "565px" },
         "max-565px": { max: "565px" },
+        "min-480px": { min: "480px" },
         "max-480px": { max: "480px" },
+        "min-420px": { min: "420px" },
         "max-420px": { max: "420px" },
         "max-380px": { max: "380px" },
         "max-360px": { max: "360px" },

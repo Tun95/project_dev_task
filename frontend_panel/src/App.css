@@ -36,6 +36,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.dark body {
+  background-color: #111827;
+}
+
 .a_flex {
   display: flex;
   align-items: center;
