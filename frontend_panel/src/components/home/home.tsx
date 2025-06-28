@@ -18,7 +18,7 @@ function Home() {
       }`}
     >
       {/* Navigation */}
-      <div className="mb-5 max-480px:mb-1">
+      <div className="mb-2 max-480px:mb-1">
         <div className="content">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 max-480px:text-xl max-480px:p-2">
             Welcome! Here's your summary

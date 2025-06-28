@@ -23,6 +23,7 @@
   --color-light-gray: hsl(0, 0%, 60%);
 
   --color-dark-bg: #1f2937;
+  --color-light-header: #f0f0f0;
   --color-dark-header: #374151;
   --color-dark-text: #f9fafb;
   --color-dark-border: #4b5563;
@@ -55,6 +56,11 @@ html {
 
 .dark-table .ant-table {
   background-color: var(--color-dark-bg);
+}
+
+.ant-table .ant-table-thead > tr > th {
+  background-color: var(--color-light-header);
+  color: var(--color-dark);
 }
 .dark-table .ant-table-thead > tr > th {
   background-color: var(--color-dark-header);

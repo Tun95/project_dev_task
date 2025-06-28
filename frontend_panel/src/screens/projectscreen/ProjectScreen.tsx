@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import Sidebar from "../../common/sidebar/Sidebar";
 import Navbar from "../../common/navbar/Navbar";
+import TableComponent from "../../components/project/Table";
 
 function ProjectScreen() {
   return (
@@ -18,7 +19,7 @@ function ProjectScreen() {
         <div className="flex-1 ml-64 w-full max-900px:ml-0">
           <Navbar />
           <main className="p-8 max-900px:p-4 max-480px:p-2">
-            My projects datas
+            <TableComponent />
           </main>
         </div>
       </div>
