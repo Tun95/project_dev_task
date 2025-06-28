@@ -10,5 +10,4 @@ export const loginSchema = Yup.object().shape({
     .matches(/[0-9]/, "Password must contain at least one number")
     .matches(/[\W_]/, "Password must contain at least one special character")
     .required("password is required"),
-  captcha: Yup.string().required("Please complete the CAPTCHA verification"),
 });
