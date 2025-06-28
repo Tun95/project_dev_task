@@ -12,11 +12,7 @@ function Home() {
   const TotalRevenue = 500000;
 
   return (
-    <div
-      className={`w-full overflow-hidden mb-[60px] ${
-        theme === "dark" ? "dark" : ""
-      }`}
-    >
+    <div className={`w-full overflow-hidden ${theme === "dark" ? "dark" : ""}`}>
       {/* Navigation */}
       <div className="mb-2 max-480px:mb-1">
         <div className="content">
@@ -58,7 +54,7 @@ function Home() {
       {/* Table Section */}
       <div className="max-900px:px-5 max-565px:p-2">
         <h4 className="text-lg font-medium text-gray-900 dark:text-gray-100">
-          Events History
+          Project History
         </h4>
         <div className="mt-1">
           <TableComponent />
