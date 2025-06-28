@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Mail, Lock, AlertCircle, Eye, EyeOff } from "lucide-react";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -151,12 +151,6 @@ const Login = () => {
                       Remember me
                     </label>
                   </div>
-                  <Link
-                    to="/forgot-paswword"
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-                  >
-                    Forgot password?
-                  </Link>
                 </div>
                 <button
                   type="submit"
@@ -175,17 +169,6 @@ const Login = () => {
               </Form>
             )}
           </Formik>
-
-          {/* FOR REGISTER LINK */}
-          {/* <div className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
-              Don't have an account?{" "}
-              <Link
-                to="/register"
-                className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-              >
-                Register
-              </Link>
-            </div> */}
         </div>
       </div>
     </div>
