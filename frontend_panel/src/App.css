@@ -11,11 +11,9 @@
   --color-border: #e7e8eb;
   --color-background: #f6f9fc;
   --color-light-light-gray: #f6f6f6;
-
   --color-red: #ff0000;
   --color-disabled-btn: #b3e4da;
   --color-link-hover: #00bfff;
-
   --color-tab: #389efd;
   --color-dark: #111827;
   --color-black: #2e2e2e;
@@ -24,12 +22,17 @@
   --color-dark-gray: #4e4e4e;
   --color-light-gray: hsl(0, 0%, 60%);
 
+  --color-dark-bg: #1f2937;
+  --color-dark-header: #374151;
+  --color-dark-text: #f9fafb;
+  --color-dark-border: #4b5563;
+  --color-dark-hover: #374151;
+  --color-dark-text-secondary: #e5e7eb;
+  --color-dark-active: #4f46e5;
+
   --transition: all 400ms ease;
   --box-shadow: 0 0.1rem 2rem rgba(30, 30, 30, 0.1);
   --light-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
-  --container-width-lg: 85%;
-  --container-width-md: 95%;
-  --container-width-sm: 96%;
 }
 
 html {
@@ -37,7 +40,7 @@ html {
 }
 
 .dark body {
-  background-color: #111827;
+  background-color: var(--color-dark);
 }
 
 .a_flex {
@@ -48,4 +51,32 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.dark-table .ant-table {
+  background-color: var(--color-dark-bg);
+}
+.dark-table .ant-table-thead > tr > th {
+  background-color: var(--color-dark-header);
+  color: var(--color-dark-text);
+  border-bottom-color: var(--color-dark-border);
+}
+.dark-table .ant-table-tbody > tr > td {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text-secondary);
+  border-bottom-color: var(--color-dark-header);
+}
+.dark-table .ant-table-tbody > tr:hover > td {
+  background-color: var(--color-dark-hover) !important;
+}
+.dark-table .ant-pagination-item a {
+  color: var(--color-dark-text-secondary);
+}
+.dark-table .ant-pagination-item-active {
+  background-color: var(--color-dark-active);
+}
+.dark-table .ant-select-selector {
+  background-color: var(--color-dark-header) !important;
+  color: var(--color-dark-text) !important;
+  border-color: var(--color-dark-border) !important;
 }

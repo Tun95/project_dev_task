@@ -5,18 +5,21 @@ import {
   Circle,
   ChevronRight,
   ChevronDown,
-  MoreVertical,
   Search,
   Download,
   ChevronLeft,
+  RefreshCw,
 } from "lucide-react";
 import { DataType } from "../../../types/data/datatype";
 import { data } from "../../../data/data";
 import { formatDate } from "../../../utilities/utils/Utils";
+import { useTheme } from "../../../custom hooks/Hooks";
 
 const { Column } = Table;
 
 function TableComponent() {
+  const { theme } = useTheme();
+
   const [pagination, setPagination] = useState<TablePaginationConfig>({
     current: 1,
     pageSize: 10,
@@ -29,6 +32,15 @@ function TableComponent() {
   const [filteredData, setFilteredData] = useState<DataType[]>(data);
   const [isMobileView, setIsMobileView] = useState(false);
   const [expandedRowKeys, setExpandedRowKeys] = useState<React.Key[]>([]);
+
+  // Clear all filters
+  const handleRefresh = () => {
+    setSearchTerm("");
+    setDateFilter("");
+    setStatusFilter("");
+    setSpeakerFilter("");
+    setPagination({ ...pagination, current: 1 });
+  };
 
   useEffect(() => {
     const tempFilteredData = data.filter((item) => {
@@ -122,6 +134,7 @@ function TableComponent() {
     <div className="w-full">
       {/* Filters Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-3 dark:text-gray-200">
+        {/* Left filters */}
         <div className="flex flex-col sm:flex-row flex-wrap gap-3 w-full md:w-auto">
           {/* Search Box */}
           <div className="relative flex-1 min-w-[200px]">
@@ -139,7 +152,7 @@ function TableComponent() {
           <select
             value={dateFilter}
             onChange={(e) => setDateFilter(e.target.value)}
-            className="px-3 h-9  rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
+            className="px-3 h-9 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
           >
             <option value="">Date</option>
             {[...new Set(data.map((item) => item.date))].map((date, index) => (
@@ -152,7 +165,7 @@ function TableComponent() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 h-9  rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
+            className="px-3 h-9 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
           >
             <option value="">Status</option>
             <option value="Completed">Completed</option>
@@ -162,7 +175,7 @@ function TableComponent() {
           <select
             value={speakerFilter}
             onChange={(e) => setSpeakerFilter(e.target.value)}
-            className="px-3 h-9  rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
+            className="px-3 h-9 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
           >
             <option value="">Name</option>
             {[...new Set(data.flatMap((item) => item.speakers))].map(
@@ -181,13 +194,14 @@ function TableComponent() {
           </div>
         </div>
 
+        {/* Right actions */}
         <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
           {/* Sort */}
           <div className="flex items-center gap-2">
             <label className="text-sm">Sort:</label>
             <select
               onChange={(e) => handleSortChange(e.target.value)}
-              className="px-3 h-9  rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
+              className="px-3 h-9 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
             >
               <option value="recent">Most Recent</option>
               <option value="name-asc">Name A-Z</option>
@@ -198,12 +212,16 @@ function TableComponent() {
 
           {/* Actions */}
           <div className="flex gap-2">
-            <button className="p-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700">
-              <MoreVertical className="w-4 h-4" />
+            <button
+              onClick={handleRefresh}
+              className="p-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+              title="Refresh filters"
+            >
+              <RefreshCw className="w-4 h-4" />
             </button>
             <button
               onClick={handleExportCSV}
-              className="flex items-center gap-2 px-3 h-9  rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+              className="flex items-center gap-2 px-3 h-9 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
             >
               <Download className="w-4 h-4" />
               <span>Export</span>
@@ -212,11 +230,15 @@ function TableComponent() {
         </div>
       </div>
 
-      {/* Table Section */}
-      <div className="rounded-lg overflow-hidden dark:bg-gray-800">
+      {/* Table Section - Using theme from useTheme */}
+      <div
+        className={`rounded-lg overflow-hidden ${
+          theme === "dark" ? "bg-gray-800" : "bg-white"
+        }`}
+      >
         <Table<DataType>
           dataSource={filteredData}
-          className="w-full"
+          className={`w-full ${theme === "dark" ? "dark-table" : ""}`}
           pagination={{
             ...pagination,
             showSizeChanger: true,

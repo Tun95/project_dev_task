@@ -104,7 +104,7 @@ function Navbar() {
                 className="flex items-center gap-2"
               >
                 <p className="text-sm font-medium text-gray-900 dark:text-white">
-                  Joao Silva
+                  Tunji Akande
                 </p>
                 <ChevronDown
                   size={16}
