@@ -133,7 +133,7 @@ function TableComponent() {
   return (
     <div className="w-full">
       {/* Filters Section */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-3 dark:text-gray-200">
+      <div className="flex flex-col md:flex-row flex-wrap justify-between items-start md:items-center gap-4 mb-3 dark:text-gray-200">
         {/* Left filters */}
         <div className="flex flex-col sm:flex-row flex-wrap gap-3 w-full md:w-auto">
           {/* Search Box */}
@@ -247,15 +247,51 @@ function TableComponent() {
             itemRender: (_, type, originalElement) => {
               if (type === "prev") {
                 return (
-                  <button className="p-1 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">
+                  <button
+                    className={`flex items-center justify-center p-2 rounded-md ${
+                      theme === "dark"
+                        ? "text-gray-300 hover:bg-gray-700 border-gray-600"
+                        : "text-gray-700 hover:bg-gray-100 border-gray-300"
+                    } border`}
+                    disabled={pagination.current === 1}
+                  >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
                 );
               }
               if (type === "next") {
                 return (
-                  <button className="p-1 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200">
+                  <button
+                    className={`flex items-center justify-center p-2 rounded-md ${
+                      theme === "dark"
+                        ? "text-gray-300 hover:bg-gray-700 border-gray-600"
+                        : "text-gray-700 hover:bg-gray-100 border-gray-300"
+                    } border`}
+                    disabled={
+                      pagination.current ===
+                      Math.ceil(
+                        filteredData.length / (pagination.pageSize || 10)
+                      )
+                    }
+                  >
                     <ChevronRight className="w-4 h-4" />
+                  </button>
+                );
+              }
+              if (type === "page") {
+                return (
+                  <button
+                    className={`w-8 h-8 rounded-full mx-1 flex items-center justify-center ${
+                      theme === "dark"
+                        ? pagination.current === originalElement
+                          ? "bg-indigo-600 text-white"
+                          : "text-gray-300 hover:bg-gray-700"
+                        : pagination.current === originalElement
+                        ? "bg-indigo-600 text-white"
+                        : "text-gray-700 hover:bg-gray-100"
+                    }`}
+                  >
+                    {originalElement}
                   </button>
                 );
               }
