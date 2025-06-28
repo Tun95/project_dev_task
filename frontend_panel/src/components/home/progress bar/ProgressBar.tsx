@@ -29,10 +29,10 @@ const ProgressBar = () => {
           <pattern
             key={`stripedPattern-${index}`}
             id={`stripedPattern-${index}`}
-            width="4"
+            width="1"
             height="10"
             patternUnits="userSpaceOnUse"
-            patternTransform="rotate(45)"
+            patternTransform="rotate(10)"
           >
             <rect width="10" height="10" fill={getColor(index)} />
             <line
@@ -70,7 +70,7 @@ const ProgressBar = () => {
             </div>
 
             <div className="flex items-center space-x-4">
-              <div className="flex-1 h-4 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+              <div className="w-full flex-1 h-6 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                 <Line
                   percent={project.percentage}
                   strokeWidth={16}
@@ -78,7 +78,7 @@ const ProgressBar = () => {
                   trailWidth={16}
                   trailColor="transparent"
                   strokeColor={`url(#stripedPattern-${index})`}
-                  className="h-full"
+                  className="h-full w-full"
                 />
               </div>
               <div className="flex items-center space-x-1">
