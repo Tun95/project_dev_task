@@ -10,15 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/react-slick": "^0.23.13",
+    "antd": "^5.26.2",
     "axios": "^1.10.0",
+    "chart.js": "^4.5.0",
     "formik": "^2.4.6",
     "lucide-react": "^0.525.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-helmet-async": "^2.0.5",
     "react-router-dom": "^7.6.3",
+    "react-slick": "^0.30.3",
     "react-spinners": "^0.17.0",
     "recharts": "^3.0.2",
+    "slick-carousel": "^1.8.1",
     "sonner": "^2.0.5",
     "yup": "^1.6.1"
   },

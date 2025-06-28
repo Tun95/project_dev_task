@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 

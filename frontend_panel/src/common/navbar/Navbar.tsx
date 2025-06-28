@@ -33,7 +33,7 @@ function Navbar() {
 
   return (
     <>
-      <header className="header sticky top-0 h-16 flex items-center justify-between px-12 max-900px:px-4  bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 transition-all z-20">
+      <header className="header sticky top-0 h-16 flex items-center justify-between px-8 max-900px:px-4  bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 transition-all z-20">
         {/* Mobile: Show logo only */}
         <div className="max-900px:flex hidden items-center">
           <Link
