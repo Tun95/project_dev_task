@@ -57,16 +57,6 @@ const Sidebar = ({ onClose, mobileVersion = false }: SidebarProps) => {
           })}
         </ul>
       </nav>
-
-      {/* <div className="absolute bottom-8 max-900px:bottom-20 w-full px-6">
-        <button
-          onClick={() => setShowLogoutDialog(true)}
-          className="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-        >
-          <LogOut size={18} />
-          <span className="text-sm">Logout</span>
-        </button>
-      </div> */}
     </div>
   );
 };

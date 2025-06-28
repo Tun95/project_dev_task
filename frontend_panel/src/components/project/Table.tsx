@@ -1,4 +1,4 @@
-import { Table, Tag } from "antd";
+import { Table, Tag, Button } from "antd";
 import { useState, useEffect } from "react";
 import type { TablePaginationConfig } from "antd/es/table";
 import {
@@ -32,6 +32,7 @@ function TableComponent() {
   const [filteredData, setFilteredData] = useState<DataType[]>(data);
   const [isMobileView, setIsMobileView] = useState(false);
   const [expandedRowKeys, setExpandedRowKeys] = useState<React.Key[]>([]);
+  const [exportLoading, setExportLoading] = useState(false); // Added loading state
 
   // Clear all filters
   const handleRefresh = () => {
@@ -110,24 +111,37 @@ function TableComponent() {
   };
 
   const handleExportCSV = () => {
-    const csvData = filteredData.map((item) => ({
-      EventName: item.eventName,
-      Date: item.date,
-      Status: item.status,
-      Speakers: item.speakers.join(", "),
-    }));
-    const csvRows = [
-      Object.keys(csvData[0]).join(","),
-      ...csvData.map((row) => Object.values(row).join(",")),
-    ];
-    const csvString = csvRows.join("\n");
-    const blob = new Blob([csvString], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "exported_data.csv";
-    a.click();
-    URL.revokeObjectURL(url);
+    setExportLoading(true);
+
+    // Simulate processing delay
+    setTimeout(() => {
+      try {
+        const csvData = filteredData.map((item) => ({
+          EventName: item.eventName,
+          Date: item.date,
+          Status: item.status,
+          Speakers: item.speakers.join(", "),
+        }));
+
+        const csvRows = [
+          Object.keys(csvData[0]).join(","),
+          ...csvData.map((row) => Object.values(row).join(",")),
+        ];
+
+        const csvString = csvRows.join("\n");
+        const blob = new Blob([csvString], { type: "text/csv" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "exported_data.csv";
+        a.click();
+        URL.revokeObjectURL(url);
+      } catch (error) {
+        console.error("Export failed:", error);
+      } finally {
+        setExportLoading(false);
+      }
+    }, 1000); // 1 second delay to show loading state
   };
 
   return (
@@ -180,7 +194,7 @@ function TableComponent() {
             onChange={(e) => setSpeakerFilter(e.target.value)}
             className="px-3 h-9 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 outline-none text-sm"
           >
-            <option value="">Name</option>
+            <option value="">Speakers</option>
             {[...new Set(data.flatMap((item) => item.speakers))].map(
               (speaker, index) => (
                 <option value={speaker} key={index}>
@@ -222,13 +236,14 @@ function TableComponent() {
             >
               <RefreshCw className="w-4 h-4" />
             </button>
-            <button
+            <Button
               onClick={handleExportCSV}
+              loading={exportLoading}
+              icon={<Download className="w-4 h-4" />}
               className="flex items-center gap-2 px-3 h-9 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
             >
-              <Download className="w-4 h-4" />
-              <span>Export</span>
-            </button>
+              Export All
+            </Button>
           </div>
         </div>
       </div>
@@ -302,6 +317,7 @@ function TableComponent() {
             },
           }}
           onChange={handleTableChange}
+          loading={exportLoading} // Show loading state on table during export
           expandable={
             isMobileView
               ? {
