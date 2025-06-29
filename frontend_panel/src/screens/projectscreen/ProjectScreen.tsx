@@ -22,11 +22,11 @@ function ProjectScreen() {
               <div className="content">
                 <div className="flex flex-col ">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 max-480px:text-xl max-480px:p-2">
+                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 max-480px:text-xl max-900px:px-2">
                       Project History
                     </h2>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-400 mt-2 max-w-3xl text-sm leading-6">
+                  <p className="text-gray-600 dark:text-gray-400 mt-2 max-w-3xl text-sm leading-6 max-900px:px-2">
                     {" "}
                     Complete timeline of all deliverables, versions, and client
                     feedback. Track progress from initial submission to final
@@ -35,8 +35,9 @@ function ProjectScreen() {
                 </div>
               </div>
             </div>
-
-            <ProjectDeliverablesTable />
+            <div className="max-900px:px-2">
+              <ProjectDeliverablesTable />
+            </div>
           </main>
         </div>
       </div>

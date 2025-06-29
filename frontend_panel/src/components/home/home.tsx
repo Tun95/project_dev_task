@@ -25,7 +25,7 @@ function Home() {
             <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 max-480px:text-xl max-480px:p-2">
               Welcome back to ProjectFlow!
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 mt-2 max-w-3xl text-sm leading-6">
+            <p className="max-900px:px-2 text-gray-600 dark:text-gray-400 mt-2 max-w-3xl text-sm leading-6">
               Track all deliverables, client feedback, and project status in one
               place. Quickly access what needs attention today.
             </p>
@@ -38,7 +38,7 @@ function Home() {
         className="grid grid-cols-4 gap-5 py-5 w-full 
                max-1045px:grid-cols-2 
                max-630px:grid-cols-1 
-               max-900px:px-0               "
+               max-900px:px-2"
       >
         <Widget count={TotalDeliverables} type="deliverables" />
         <Widget count={PendingReview} type="pending" />
@@ -47,7 +47,7 @@ function Home() {
       </div>
 
       {/* Chart and Slider Section */}
-      <div className="mb-5 max-900px:px-0">
+      <div className="mb-5 max-900px:px-2">
         <h4 className="text-lg font-medium text-gray-900 dark:text-gray-100">
           Project Overview
         </h4>
@@ -61,7 +61,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="max-900px:px-0 mb-5">
+      <div className="max-900px:px-2 mb-5">
         <h4 className="text-lg font-medium text-gray-900 dark:text-gray-100">
           Project Statistics
         </h4>
@@ -71,7 +71,7 @@ function Home() {
       </div>
 
       {/* Table Section */}
-      <div className="max-900px:px-0 relative">
+      <div className="max-900px:px-2 relative">
         <h4 className="text-lg font-medium text-gray-900 dark:text-gray-100">
           Latest Deliveries
         </h4>
