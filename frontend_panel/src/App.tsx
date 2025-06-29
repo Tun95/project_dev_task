@@ -34,13 +34,12 @@ function App() {
     <div className="app">
       <Toaster expand visibleToasts={1} />
       <Routes>
+        {/* AUTH */}
+        <Route path="/login" element={<LoginScreen />} />
+
         <Route path="*" element={<NotFoundScreen />} />
         <Route path="/" element={<HomeScreen />} />
         <Route path="/projects" element={<ProjectScreen />} />
-
-        {/* AUTH */}
-        <Route path="/login" element={<LoginScreen />} />
-        {/* AUTH */}
       </Routes>
     </div>
   );
